@@ -11921,9 +11921,6 @@ xmlSAXParseDTD(xmlSAXHandlerPtr sax, const xmlChar *ExternalID,
 	return(NULL);
     }
 
-    #ifdef __QNX__
-    if(SystemID == NULL) return(NULL);
-    #endif
 
     /*
      * Ask the Entity resolver to load the damn thing
