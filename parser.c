@@ -250,6 +250,7 @@ static void LIBXML_ATTR_FORMAT(3,0)
 xmlFatalErrMsg(xmlParserCtxtPtr ctxt, xmlParserErrors error,
                const char *msg)
 {
+    if(msg == NULL) msg = "";
     xmlCtxtErr(ctxt, NULL, XML_FROM_PARSER, error, XML_ERR_FATAL,
                NULL, NULL, NULL, 0, "%s", msg);
 }
