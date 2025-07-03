@@ -432,8 +432,13 @@ xmlSAX2ResolveEntity(void *ctx, const xmlChar *publicId, const xmlChar *systemId
             if (res < 0)
                 xmlSAX2ErrMemory(ctxt);
             else
+#ifdef __QNX__
+            xmlWarnMsg(ctxt, XML_ERR_INVALID_URI,
+                           "Can't resolve URI: %s\n", systemId==NULL?" ":systemId);
+#else
                 xmlWarnMsg(ctxt, XML_ERR_INVALID_URI,
                            "Can't resolve URI: %s\n", systemId);
+#endif
             return(NULL);
         }
         if (xmlStrlen(URI) > XML_MAX_URI_LENGTH) {
